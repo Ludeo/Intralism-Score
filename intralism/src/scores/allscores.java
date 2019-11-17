@@ -1608,6 +1608,16 @@ public class allscores {
 		hundredcountl2.setLayout(null);
 		profileFrame.add(hundredcountl2);
 		
+		JLabel totalmapl1 = new JLabel("Total Maps");
+		totalmapl1.setBounds(155,205,100,15);
+		totalmapl1.setLayout(null);
+		profileFrame.add(totalmapl1);
+		
+		JLabel totalmapl2 = new JLabel(mapcount + "");
+		totalmapl2.setBounds(155,220,100,15);
+		totalmapl2.setLayout(null);
+		profileFrame.add(totalmapl2);
+		
 		JLabel trash = new JLabel("");
 		trash.setBounds(800,800,0,0);
 		trash.setLayout(null);

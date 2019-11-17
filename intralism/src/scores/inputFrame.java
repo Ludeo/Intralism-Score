@@ -2,8 +2,9 @@ package scores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,11 +22,13 @@ public class inputFrame {
 		menu.setLocation(800, 200);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JTextField input = new JTextField("");
-		input.setText("Place your profile link here");
-		input.setSize(100,20);
+		JTextField input = new JTextField("Place your profile link here");
+		input.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				input.setText("");
+			}
+		});
 		panel.add(input);
-		
 		
 		JButton enter = new JButton("Check");
 		enter.addActionListener(new ActionListener() {
@@ -37,7 +40,6 @@ public class inputFrame {
 				}
 			}
 		});
-		enter.setBounds(10, 10, 60, 20);
 		panel.add(enter);
 		
 		JButton credit = new JButton("Credits");
@@ -75,10 +77,8 @@ public class inputFrame {
 			}
 		});
 		panel.add(credit);
-		
-		
+
 		menu.pack();
-		
 	}
 
 }
