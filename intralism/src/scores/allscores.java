@@ -870,7 +870,7 @@ public class allscores {
 	    allscores[205][7] = (String)"Broken";
 	    
 	    allscores[206][0] = (String)"Haruka Tomatsu - Resolution (TV Size)";
-	    allscores[206][5] = (double) 12.36;
+	    allscores[206][5] = (double) 12.57;
 	    allscores[206][7] = (String)"Broken";
 	   
 	    allscores[207][0] = (String)"MC MENTAL @ HIS BEST";
