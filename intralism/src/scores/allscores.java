@@ -1026,11 +1026,11 @@ public class allscores {
 	    allscores[244][7] = (String)"idk";
 	    
 	    allscores[245][0] = (String)"Nameless - Milk Crown on Sonnetica";
-	    allscores[245][5] = (double) 25.10;
+	    allscores[245][5] = (double) 25.08;
 	    allscores[245][7] = (String)"idk";
 	    
 	    allscores[246][0] = (String)"nano - Omoide Kakera";
-	    allscores[246][5] = (double) 26.85;
+	    allscores[246][5] = (double) 26.13;
 	    allscores[246][7] = (String)"idk";
 	    
 	    allscores[247][0] = (String)"t+pazolite & Getty - Twisted Drop Party";
@@ -1046,7 +1046,7 @@ public class allscores {
 	    allscores[249][7] = (String)"idk";
 	    
 	    allscores[250][0] = (String)"Camellia - K.Y.A.F.A";
-	    allscores[250][5] = (double) 46.95;
+	    allscores[250][5] = (double) 46.92;
 	    allscores[250][7] = (String)"idk";
 	    
 		while( (line=bufReader.readLine()) != null )
