@@ -14,7 +14,7 @@ I hope this program helps you out and if you have any suggestions or feedback it
 Special Thanks to FlyingRabidUnicornPig (https://github.com/FlyingRabidUnicornPig) for helping me out with the code and also Special Thanks to Kiri (Kiri#0001) for checking the maximum points on every map I wasn't able to check.
 
 # Updating the Score Checker
-Since v2.0.1 the score checker uses a CSV-file. You need to download the CSV-file, as well as the java file as always. Make sure both files are in the same directory, otherwise it wont work. In the CSV-file every map is saved in the following format:
+Since v2.0.1 the score checker uses a CSV-file. You need to download the CSV-file, as well as the java file as always. Make sure both files are in the same directory, otherwise it won't work. In the CSV-file every map is saved in the following format:
 
       mapname,maxpoints,brokenstatus,workshopid
       
