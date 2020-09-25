@@ -1,4 +1,4 @@
-#General Informaion
+# General Information
 I have started using Google Sheets to keep track of my scores in Intralism so I can see where I am missing points on an stuff like that. But using Google Sheets you have to update it yourself every time you did a new score and creating a Google Sheet for someone else also took some time. So I came up with the idea to write a program that automatically gets the scores from a user.
 
 Before you start the program, make sure that you have Java installed. When you start the program you have to click on the textfield and then post the link of an Intralism player in there, for example: https://intralism.khb-soft.ru/?player=SteamID (you have to change the SteamID to the SteamID of the user you want to check so the ID thats shown in the profile URL). Then two windows will open, one is the players profile and the other one is a table with all of your scores. 
@@ -13,7 +13,7 @@ I hope this program helps you out and if you have any suggestions or feedback it
 
 Special Thanks to FlyingRabidUnicornPig (https://github.com/FlyingRabidUnicornPig) for helping me out with the code and also Special Thanks to Kiri (Kiri#0001) for checking the maximum points on every map I wasn't able to check.
 
-#Updating the Score Checker
+# Updating the Score Checker
 Since v2.0.1 the score checker uses a CSV-file. In this file every map is saved in the following format:
       mapname,maxpoints,brokenstatus,workshopid
 For example:
