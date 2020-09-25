@@ -6,48 +6,30 @@ import java.awt.image.BufferedImage;
 
 public class functions {
 	
-	public static int getScore(String line) {
-		String score = line;
-		int anumber = score.indexOf(">");  
-    	int bnumber = score.toString().indexOf("<", anumber);
-    	score = score.substring(anumber+1, bnumber);
-		return Integer.parseInt(score.replaceAll("\\s+",""));
-	}
-	
-	public static double getAcc(String line) {
-		String acc = line;
-    	int anumber = acc.indexOf(">");  
-    	int bnumber = acc.toString().indexOf("<", anumber);
-    	acc = acc.substring(anumber+1, bnumber);
-    	acc = acc.replaceAll("\\n+", "");
-    	return Double.parseDouble(acc.replaceAll("%", ""));
-	}
-	
-	public static int getMiss(String line) {
-		String miss = line;
-    	int anumber = miss.indexOf(">");  
-    	int bnumber = miss.toString().indexOf("<", anumber);
-    	miss = miss.substring(anumber+1, bnumber);
-    	return Integer.parseInt(miss.replaceAll("\\s+", ""));
-	}
-	
-	public static double getPoints(String line) {
-		String points = line;
-    	int anumber = points.indexOf(">");  
-    	int bnumber = points.toString().indexOf("<", anumber);
-    	points = points.substring(anumber+1, bnumber);
-    	return Double.parseDouble(points.replaceAll("\\s+", ""));
+	public static String[] getMapDetail(String score, String acc, String miss, String points) {
+		String[] inputvalues = {score, acc, miss, points};
+		String[] outputvalues = new String[4];
+		
+		for(int i = 0; i < inputvalues.length; i++) {
+			
+			String value = inputvalues[i];
+			int anumber = value.indexOf(">");  
+	    	int bnumber = value.toString().indexOf("<", anumber);
+	    	value = value.substring(anumber+1, bnumber);
+	    	
+	    	if(i != 1) outputvalues[i] = value.replaceAll("\\s+","");
+	    	else {
+	    		value = value.replaceAll("\\n+", "");
+	    		outputvalues[i] = value.replaceAll("%", "");
+	    	}
+		}
+		
+		return outputvalues;
 	}
 	
 	public static double[] recalc(Object allscores[][]) {
-		double totalacc = 0;
-		int totalmiss = 0;
-		double totaldifference = 0;
-		int hundredcount = 0;
-		double realpoints = 0;
-		double rankedpoints = 0;
-		double maximumpoints = 0;
-		int mapcount = allscores.length;
+		double totalacc = 0, totaldifference = 0, realpoints = 0, rankedpoints = 0, maximumpoints = 0;
+		int totalmiss = 0, hundredcount = 0, mapcount = allscores.length;
 		
 		for(int i = 0; i<allscores.length;i++) {
 			if(allscores[i][0] != null) {
@@ -58,7 +40,6 @@ public class functions {
 				maximumpoints += maxpoints;
 				
 				if(allscores[i][7].toString().contentEquals("Broken")) {
-					System.out.println("test");
 					if(points == maxpoints) {
 						
 						if(allscores[i][0] == "Indigo Child - Nostalgia") {

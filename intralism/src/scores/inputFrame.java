@@ -16,7 +16,7 @@ public class inputFrame {
 	public static void main(String[]args) throws IOException {
 		JPanel panel = new JPanel();
 		
-		JFrame menu = new JFrame("");
+		JFrame menu = new JFrame("Intralism Score Checker");
 		menu.setVisible(true);
 		menu.add(panel);
 		menu.setLocation(800, 200);
@@ -50,26 +50,15 @@ public class inputFrame {
 				frame.setResizable(false);
 				frame.setVisible(true);
 				
-																															  
-				JLabel text = new JLabel("This program was created by Ludeo.");
-				text.setBounds(10,10,550,15);
-				frame.add(text);
+				String[] texts = {"This program was created by Ludeo.", "Special Thanks to FlyingRabidUnicornPig(FlyingRabidUnicornPigâ„¢#5435) for helping me out", 
+						"with the Code and Special Thanks to Kiri(Kiri#0001) for checking all the maps if they are broken or not.", 
+						"I will try to keep this program up to date. If you have any questions, feel free to write me a message", "on Discord (Ludeo#8554)."};
 				
-				JLabel text2 = new JLabel("Special Thanks to FlyingRabidUnicornPig(FlyingRabidUnicornPig™#5435) for helping me out");
-				text2.setBounds(10,25,550,15);
-				frame.add(text2);
-				
-				JLabel text3 = new JLabel("with the Code and Special Thanks to Kiri(Kiri#1000) for checking all the maps if they are broken or not.");
-				text3.setBounds(10,40,580,15);
-				frame.add(text3);
-				
-				JLabel text5 = new JLabel("I will try to keep this program up to date. If you have any questions, feel free to write me a message");
-				text5.setBounds(10,55,580,15);
-				frame.add(text5);
-				
-				JLabel text6 = new JLabel("on Discord (Ludeo#8554).");
-				text6.setBounds(10,70,550,15);
-				frame.add(text6);
+				for(int i = 0; i < 5; i++) {
+					JLabel text = new JLabel(texts[i]);
+					text.setBounds(10,10+i*15,580,15);
+					frame.add(text);
+				}
 				
 				JLabel trash = new JLabel("");
 				trash.setBounds(500,70,0,0);

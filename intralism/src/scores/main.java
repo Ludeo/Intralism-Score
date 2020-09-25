@@ -11,10 +11,13 @@ import javax.swing.table.TableRowSorter;
 
 public class main {
 	
+	private static JFrame frame;
+	
 	public static void openWindow(String link) throws IOException {
 		
-		JFrame frame = new JFrame("Scores");
-		frame.setBounds(770,300,100,600);
+		frame = new JFrame("Scores");
+		frame.setSize(100,600);
+		frame.setLocationRelativeTo(null);
 		Container content = frame.getContentPane();
 		
 		JTable table = new JTable(new table_Model(link));
@@ -26,6 +29,10 @@ public class main {
 		table.setRowSorter(sorter);
 		
 		frame.pack();
+	}
+	
+	public static JFrame getJFrame() {
+		return frame;
 	}
 
 }

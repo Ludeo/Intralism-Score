@@ -1,9 +1,13 @@
 package scores;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.nio.charset.Charset;
 
 public class csvReader {
 	
@@ -15,12 +19,17 @@ public class csvReader {
 
         try {
 
-        	String line = "";
+        	LineNumberReader lineNumberReader = new LineNumberReader(new FileReader(path));
+        	lineNumberReader.skip(Long.MAX_VALUE);
+        	int lines = lineNumberReader.getLineNumber();
+        	lineNumberReader.close();
         	
-            BufferedReader br = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), Charset.forName("UTF-8")));
             
-            String[][] result = new String[252][4];
+            String[][] result = new String[lines+1][4];
+            
             int count = 0;
+            String line = "";
             
             while ((line = br.readLine()) != null) {
             	
