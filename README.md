@@ -15,18 +15,27 @@ Special Thanks to FlyingRabidUnicornPig (https://github.com/FlyingRabidUnicornPi
 
 # Updating the Score Checker
 Since v2.0.1 the score checker uses a CSV-file. In this file every map is saved in the following format:
+
       mapname,maxpoints,brokenstatus,workshopid
+      
 For example:
+
       Camellia - K.Y.A.F.A,46.92,idk,2180608464
+      
       
 Each map has it's OWN line in the file. That means if you add a map, make sure to press enter on the end of the file. Also, make sure that you follow the exceptions below:      
 
 If the map name contains a quote character, you need to replace it with QUOTE. Example:
+
       Yooh - "MariannE " --> Yooh - QUOTEMariannE QUOTE
       
+      
 If the map name contains a comma character, you need to replace it with COMMA. Example: 
+
       X&G - Whiplash ft, josh pan (sakuraburst Remix) --> X&G - Whiplash ftCOMMA josh pan (sakuraburst Remix)
       
+      
 If you don't change those two characters if you are adding maps yourself, then the score checker won't work properly. You don't have to add the maps yourself though. If new maps are released, I am going to post the lines you have to add in the file on the official Intralism discord and I am also going to update the maps.csv file here on Github. If I take too long for that and you still want to add them yourself, then follow the format above and you are good. Also, if you do want to add a new map and you are not sure if it is broken or not, then just use the brokenstatus idk. It appears sometimes in the mapfile because nobody I asked knows if it is broken or not. So if you discover a map that has the broken status and you FOR SURE know that it is broken or that it is not broken, let me and other players know on the official Intralism discord.
+
 
 Link to the official Intralism discord: https://discord.com/invite/intralism
