@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,14 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class inputFrame {
+	private static JPanel panel;
 	
 	public static void main(String[]args) throws IOException {
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		
 		JFrame menu = new JFrame("Intralism Score Checker");
 		menu.setVisible(true);
 		menu.add(panel);
 		menu.setLocation(800, 200);
+		menu.setResizable(false);
 		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTextField input = new JTextField("Place your profile link here");
@@ -66,8 +69,38 @@ public class inputFrame {
 			}
 		});
 		panel.add(credit);
+		
+		JButton checkLast = new JButton("Last Checked");
+		checkLast.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				csvReader reader = new csvReader();
+				String[][] lastChecked = reader.getCSVContent("savedplayers.csv");
+				
+				try {
+					main.openWindow(lastChecked[0][1]);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		panel.add(checkLast);
+		
+		JButton test = new JButton("Player List");
+		test.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				functions.openPlayerList();
+				
+			}
+		});
+		panel.add(test);
 
 		menu.pack();
+	}
+	
+	public static JPanel getJPanel() {
+		return panel;
 	}
 
 }

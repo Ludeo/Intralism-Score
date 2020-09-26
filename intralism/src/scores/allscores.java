@@ -128,6 +128,8 @@ public class allscores {
 			profileFrame.add(label);
 		}
 		
+		functions.saveLastChecked(link);
+		
 		return allscores;
 	}
 
