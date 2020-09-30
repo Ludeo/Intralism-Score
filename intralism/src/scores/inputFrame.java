@@ -1,106 +1,103 @@
 package scores;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
-public class inputFrame {
-	private static JPanel panel;
-	
-	public static void main(String[]args) throws IOException {
-		panel = new JPanel();
-		
-		JFrame menu = new JFrame("Intralism Score Checker");
-		menu.setVisible(true);
-		menu.add(panel);
-		menu.setLocation(800, 200);
-		menu.setResizable(false);
-		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JTextField input = new JTextField("Place your profile link here");
-		input.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				input.setText("");
-			}
-		});
-		panel.add(input);
-		
-		JButton enter = new JButton("Check");
-		enter.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					main.openWindow(input.getText());
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		panel.add(enter);
-		
-		JButton credit = new JButton("Credits");
-		credit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame frame = new JFrame("Credits");
-				frame.setBounds(100,100,610,130);
-				frame.setResizable(false);
-				frame.setVisible(true);
-				
-				String[] texts = {"This program was created by Ludeo.", "Special Thanks to FlyingRabidUnicornPig(FlyingRabidUnicornPig™#5435) for helping me out", 
-						"with the Code and Special Thanks to Kiri(Kiri#0001) for checking all the maps if they are broken or not.", 
-						"I will try to keep this program up to date. If you have any questions, feel free to write me a message", "on Discord (Ludeo#8554)."};
-				
-				for(int i = 0; i < 5; i++) {
-					JLabel text = new JLabel(texts[i]);
-					text.setBounds(10,10+i*15,580,15);
-					frame.add(text);
-				}
-				
-				JLabel trash = new JLabel("");
-				trash.setBounds(500,70,0,0);
-				frame.add(trash);
-			}
-		});
-		panel.add(credit);
-		
-		JButton checkLast = new JButton("Last Checked");
-		checkLast.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				csvReader reader = new csvReader();
-				String[][] lastChecked = reader.getCSVContent("savedplayers.csv");
-				
-				try {
-					main.openWindow(lastChecked[0][1]);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
-			}
-		});
-		panel.add(checkLast);
-		
-		JButton test = new JButton("Player List");
-		test.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				functions.openPlayerList();
-				
-			}
-		});
-		panel.add(test);
+public class InputFrame {
+    private static JPanel panel;
 
-		menu.pack();
+    public static void main(String[] args) {
+	CSVReader reader = new CSVReader();
+
+	panel = new JPanel();
+
+	JFrame menu = new JFrame("Intralism Score Checker");
+	menu.setVisible(true);
+	menu.add(panel);
+	menu.setLocation(800, 200);
+	menu.setResizable(false);
+	menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+	JTextField input = new JTextField("Place your profile link here");
+	input.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		input.setText("");
+	    }
+	});
+	panel.add(input);
+
+	JButton enter = new JButton("Check");
+	enter.addActionListener(e -> {
+	    try {
+		Main.openWindow(input.getText());
+	    } catch (SocketTimeoutException e1) {
+		JOptionPane.showMessageDialog(InputFrame.getJPanel(), "Couldn't build up a connection. Try again",
+			"Warning", JOptionPane.WARNING_MESSAGE);
+	    } catch (IOException e1) {
+		e1.printStackTrace();
+	    }
+	});
+	panel.add(enter);
+
+	JButton checkLast = new JButton("Last Checked");
+	checkLast.addActionListener(e -> {
+
+	    String[][] lastChecked = reader.getCSVContent("config.csv");
+
+	    try {
+		Main.openWindow(lastChecked[0][1]);
+	    } catch (SocketTimeoutException e1) {
+		JOptionPane.showMessageDialog(InputFrame.getJPanel(), "Couldn't build up a connection. Try again",
+			"Warning", JOptionPane.WARNING_MESSAGE);
+	    } catch (IOException e1) {
+		e1.printStackTrace();
+	    }
+
+	});
+	panel.add(checkLast);
+
+	JButton playerlist = new JButton("Player List");
+	playerlist.addActionListener(e -> Functions.openPlayerList());
+	panel.add(playerlist);
+
+	JButton settings = new JButton("Settings");
+	settings.addActionListener(e -> Functions.openSettingFrame(menu));
+	panel.add(settings);
+
+	Map<String, String> configMap = Functions.getConfigMap();
+	boolean darkmode = Boolean.parseBoolean(configMap.get("DarkMode"));
+
+	if (darkmode) {
+	    panel.setBackground(Color.DARK_GRAY);
+	    input.setBackground(Color.DARK_GRAY);
+	    input.setForeground(Color.WHITE);
+	    enter.setBackground(Color.GRAY);
+	    enter.setForeground(Color.white);
+	    settings.setBackground(Color.GRAY);
+	    settings.setForeground(Color.white);
+	    checkLast.setBackground(Color.GRAY);
+	    checkLast.setForeground(Color.white);
+	    playerlist.setBackground(Color.GRAY);
+	    playerlist.setForeground(Color.white);
 	}
-	
-	public static JPanel getJPanel() {
-		return panel;
-	}
+
+	menu.pack();
+    }
+
+    public static JPanel getJPanel() {
+	return panel;
+    }
 
 }
